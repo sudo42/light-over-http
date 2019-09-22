@@ -1,6 +1,6 @@
 'use strict';
 
-const API = axios({
+const API = axios.create({
     url: './v1/rs/',
 });
 
