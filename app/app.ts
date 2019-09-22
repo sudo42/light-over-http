@@ -44,12 +44,13 @@ api.post('/v1/rs/:unit/:state', (req, res) => {
 api.post('/v1/rs/:unit', (req, res) => {
     const VALUES_ON = ['1','true','on'];
     const VALUES_OFF = ['0','false','off'];
-    const unit = req.params.unit;
+    const unitRaw = req.params.unit;
+    const unit = Number(unitRaw);
     let state = req.body;
     let errors = [];
 
-    if (!isFinite(unit) || unit < 1 || (unit > 16 && unit != 255) {
-        errors.push({ msg: 'unit has to be an integer between 1 and 16 (255 is allowed, too)', debug: unit });
+    if (!isFinite(unit) || unit < 1 || (unit > 16 && unit != 255)) {
+        errors.push({ msg: 'unit has to be an integer between 1 and 16 (255 is allowed, too)', debug: unitRaw });
     }
     if (typeof state === 'undefined' || state === null || state === "") {
         errors.push({ msg: 'body is empty', debug: state });
