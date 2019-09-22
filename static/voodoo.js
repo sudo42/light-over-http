@@ -1,7 +1,7 @@
 'use strict';
 
 const API = axios.create({
-    url: './v1/rs/',
+    baseURL: './v1/rs/',
 });
 
 window.addEventListener('DOMContentLoaded', () => {
