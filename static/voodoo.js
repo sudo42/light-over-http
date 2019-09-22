@@ -15,6 +15,10 @@ window.addEventListener('DOMContentLoaded', () => {
         const lightId = parent.getAttribute('data-light-id');
         const setTo = target.getAttribute('data-set-to');
 
-        API.post(lightId, setTo);
+        API.post(lightId, setTo, {
+            headers: {
+                'content-type': 'text/plain',
+            }
+        });
     });
 });

@@ -1,5 +1,6 @@
 import * as TF from 'tinkerforge';
 import * as express from 'express';
+import * as bodyParser from 'body-parser';
 
 const TF_HOST = 'localhost';
 const TF_PORT = 4223;
@@ -30,6 +31,8 @@ console.debug('hooray!');
 // });
 
 const api = express();
+api.use(bodyParser.text());
+api.use(bodyParser.json());
 
 // old, deprecated api
 api.post('/v1/rs/:unit/:state', (req, res) => {
